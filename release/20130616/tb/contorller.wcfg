@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Dropbox/vWorker/freelancehandover/ise/tb_controller_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_textio" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="tb_controller" />
+            <top_module name="textio" />
+            <top_module name="vl_types" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="7" />
+   <wvobject fp_name="group40" type="group">
+      <obj_property name="label">tb</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/edid0_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid0_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid0_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/edid0_byte_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">edid0_byte_en</obj_property>
+         <obj_property name="ObjectShortName">edid0_byte_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/edid1_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid1_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid1_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/edid1_byte_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">edid1_byte_en</obj_property>
+         <obj_property name="ObjectShortName">edid1_byte_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_clk</obj_property>
+         <obj_property name="ObjectShortName">jpeg_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/flag_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_full</obj_property>
+         <obj_property name="ObjectShortName">flag_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/flag_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_empty</obj_property>
+         <obj_property name="ObjectShortName">flag_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/ifclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk</obj_property>
+         <obj_property name="ObjectShortName">ifclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/resx0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resx0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resx0[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/resy0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resy0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resy0[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/resx1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resx1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resx1[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/resy1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resy1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resy1[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_error" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_error</obj_property>
+         <obj_property name="ObjectShortName">jpeg_error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/rgb_de0" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_de0</obj_property>
+         <obj_property name="ObjectShortName">rgb_de0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/rgb_de1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_de1</obj_property>
+         <obj_property name="ObjectShortName">rgb_de1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ff0000</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/fdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdata[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/slwr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slwr</obj_property>
+         <obj_property name="ObjectShortName">slwr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/pktend" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend</obj_property>
+         <obj_property name="ObjectShortName">pktend</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/sim" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sim</obj_property>
+         <obj_property name="ObjectShortName">sim</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ff0000</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_fifo_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fifo_full</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fifo_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_enable</obj_property>
+         <obj_property name="ObjectShortName">jpeg_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/faddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/slrd" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slrd</obj_property>
+         <obj_property name="ObjectShortName">slrd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/sloe" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sloe</obj_property>
+         <obj_property name="ObjectShortName">sloe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/dvi_hdmi" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dvi_hdmi[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dvi_hdmi[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/encoder_hdmi_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_hdmi_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_hdmi_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_quality" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_quality[1:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_quality[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/encoder_output_type" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_output_type[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_output_type[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/hdmi_out0_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out0_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out0_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/hdmi_out1_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out1_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out1_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/jpeg_clk_period" type="other" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_clk_period</obj_property>
+         <obj_property name="ObjectShortName">jpeg_clk_period</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/ifclk_period" type="other" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk_period</obj_property>
+         <obj_property name="ObjectShortName">ifclk_period</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/clk_period" type="other" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_period</obj_property>
+         <obj_property name="ObjectShortName">clk_period</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/capture_oram" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">capture_oram[1:18]</obj_property>
+         <obj_property name="ObjectShortName">capture_oram[1:18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/capture_bin" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">capture_bin[1:19]</obj_property>
+         <obj_property name="ObjectShortName">capture_bin[1:19]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group89" type="group">
+      <obj_property name="label">jpg_ram</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/uut2/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/ram_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ram_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">ram_byte[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/ram_wren" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ram_wren</obj_property>
+         <obj_property name="ObjectShortName">ram_wren</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/outif_almost_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">outif_almost_full</obj_property>
+         <obj_property name="ObjectShortName">outif_almost_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/jpeg_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_enable</obj_property>
+         <obj_property name="ObjectShortName">jpeg_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/raddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">raddr[15:0]</obj_property>
+         <obj_property name="ObjectShortName">raddr[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/q" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">q[7:0]</obj_property>
+         <obj_property name="ObjectShortName">q[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut2/fetch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fetch</obj_property>
+         <obj_property name="ObjectShortName">fetch</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group155" type="group">
+      <obj_property name="label">controller_top</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/uut/edid0_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid0_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid0_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/edid0_byte_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">edid0_byte_en</obj_property>
+         <obj_property name="ObjectShortName">edid0_byte_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/edid1_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid1_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid1_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/edid1_byte_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">edid1_byte_en</obj_property>
+         <obj_property name="ObjectShortName">edid1_byte_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_byte[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_clk</obj_property>
+         <obj_property name="ObjectShortName">jpeg_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_enable</obj_property>
+         <obj_property name="ObjectShortName">jpeg_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_fifo_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fifo_full</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fifo_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/fdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/flag_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_full</obj_property>
+         <obj_property name="ObjectShortName">flag_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/flag_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_empty</obj_property>
+         <obj_property name="ObjectShortName">flag_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/faddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/sloe" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sloe</obj_property>
+         <obj_property name="ObjectShortName">sloe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/slwr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slwr</obj_property>
+         <obj_property name="ObjectShortName">slwr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/slrd" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slrd</obj_property>
+         <obj_property name="ObjectShortName">slrd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/pktend" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend</obj_property>
+         <obj_property name="ObjectShortName">pktend</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/ifclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk</obj_property>
+         <obj_property name="ObjectShortName">ifclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/resx0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resx0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resx0[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/resy0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resy0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resy0[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/resx1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resx1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resx1[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/resy1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resy1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resy1[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_error" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_error</obj_property>
+         <obj_property name="ObjectShortName">jpeg_error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/rgb_de0" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_de0</obj_property>
+         <obj_property name="ObjectShortName">rgb_de0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/rgb_de1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_de1</obj_property>
+         <obj_property name="ObjectShortName">rgb_de1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/dvi_hdmi" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dvi_hdmi[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dvi_hdmi[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/encoder_hdmi_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_hdmi_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_hdmi_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_quality" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_quality[1:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_quality[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/encoder_output_type" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_output_type[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_output_type[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/hdmi_out0_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out0_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out0_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdcout" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cdcout[1:0]</obj_property>
+         <obj_property name="ObjectShortName">cdcout[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdcin" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cdcin[1:0]</obj_property>
+         <obj_property name="ObjectShortName">cdcin[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/uvcin" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">uvcin[1:0]</obj_property>
+         <obj_property name="ObjectShortName">uvcin[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/ps" type="other" db_ref_id="1">
+         <obj_property name="ElementShortName">ps</obj_property>
+         <obj_property name="ObjectShortName">ps</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/sloe_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sloe_i</obj_property>
+         <obj_property name="ObjectShortName">sloe_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/slrd_cdc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slrd_cdc</obj_property>
+         <obj_property name="ObjectShortName">slrd_cdc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/slwr_cdc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slwr_cdc</obj_property>
+         <obj_property name="ObjectShortName">slwr_cdc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/pktend_cdc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend_cdc</obj_property>
+         <obj_property name="ObjectShortName">pktend_cdc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/slwr_uvc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slwr_uvc</obj_property>
+         <obj_property name="ObjectShortName">slwr_uvc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/pktend_uvc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend_uvc</obj_property>
+         <obj_property name="ObjectShortName">pktend_uvc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_free" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cdc_out_free</obj_property>
+         <obj_property name="ObjectShortName">cdc_out_free</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_free" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cdc_in_free</obj_property>
+         <obj_property name="ObjectShortName">cdc_in_free</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/uvc_in_free" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">uvc_in_free</obj_property>
+         <obj_property name="ObjectShortName">uvc_in_free</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/faddr_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cmd_en</obj_property>
+         <obj_property name="ObjectShortName">cmd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_enable_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_enable_i</obj_property>
+         <obj_property name="ObjectShortName">jpeg_enable_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/error" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">error</obj_property>
+         <obj_property name="ObjectShortName">error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/dvi_hdmi_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dvi_hdmi_i[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dvi_hdmi_i[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/dump_edid" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dump_edid[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dump_edid[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/encoder_hdmi_source_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_hdmi_source_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_hdmi_source_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpeg_quality_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_quality_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_quality_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/encoder_output_type_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_output_type_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_output_type_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/hdmi_out0_source_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out0_source_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out0_source_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/hdmi_out1_source_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out1_source_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out1_source_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/status" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">status[15:0]</obj_property>
+         <obj_property name="ObjectShortName">status[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/faddr_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr_i[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr_i[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cmd_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cmd_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/fdatain" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdatain[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdatain[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/fdataout" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdataout[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdataout[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/fdataout_cdc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdataout_cdc[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdataout_cdc[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/fdataout_uvc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdataout_uvc[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdataout_uvc[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group169" type="group">
+      <obj_property name="label">cdc_out</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/fdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/flag_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_full</obj_property>
+         <obj_property name="ObjectShortName">flag_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/flag_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_empty</obj_property>
+         <obj_property name="ObjectShortName">flag_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/faddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/cdcout" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cdcout[1:0]</obj_property>
+         <obj_property name="ObjectShortName">cdcout[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/ifclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk</obj_property>
+         <obj_property name="ObjectShortName">ifclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/cmd" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cmd[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cmd[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/cmd_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cmd_en</obj_property>
+         <obj_property name="ObjectShortName">cmd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/cdc_out_free" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cdc_out_free</obj_property>
+         <obj_property name="ObjectShortName">cdc_out_free</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/slrd" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slrd</obj_property>
+         <obj_property name="ObjectShortName">slrd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_out_comp/s" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">s</obj_property>
+         <obj_property name="ObjectShortName">s</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group184" type="group">
+      <obj_property name="label">cmd_decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/jpeg_encoder_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_encoder_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_encoder_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/status" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">status[15:0]</obj_property>
+         <obj_property name="ObjectShortName">status[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/hdmi_out0_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out0_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out0_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/dump_edid" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dump_edid[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dump_edid[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/dvi_hdmi" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dvi_hdmi[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dvi_hdmi[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/encoder_hdmi_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_hdmi_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_hdmi_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/encoder_output_type" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_output_type[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_output_type[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/jpeg_quality" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_quality[1:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_quality[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/cmd_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cmd_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cmd_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/cmd_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cmd_en</obj_property>
+         <obj_property name="ObjectShortName">cmd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/ifclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk</obj_property>
+         <obj_property name="ObjectShortName">ifclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cmd_decoder_comp/jpeg_encoder_en_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_encoder_en_i</obj_property>
+         <obj_property name="ObjectShortName">jpeg_encoder_en_i</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group222" type="group">
+      <obj_property name="label">uvc</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_fifo_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fifo_full</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fifo_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/error" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">error</obj_property>
+         <obj_property name="ObjectShortName">error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_clk</obj_property>
+         <obj_property name="ObjectShortName">jpeg_clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_enable</obj_property>
+         <obj_property name="ObjectShortName">jpeg_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/slwr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slwr</obj_property>
+         <obj_property name="ObjectShortName">slwr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/pktend" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend</obj_property>
+         <obj_property name="ObjectShortName">pktend</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/fdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/flag_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_full</obj_property>
+         <obj_property name="ObjectShortName">flag_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/ifclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk</obj_property>
+         <obj_property name="ObjectShortName">ifclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/faddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/uvcin" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">uvcin[1:0]</obj_property>
+         <obj_property name="ObjectShortName">uvcin[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/uvc_in_free" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">uvc_in_free</obj_property>
+         <obj_property name="ObjectShortName">uvc_in_free</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_rst</obj_property>
+         <obj_property name="ObjectShortName">jpeg_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_rd_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_rd_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_rd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_fifo_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fifo_empty</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fifo_empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_fifo_empty_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fifo_empty_i</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fifo_empty_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/eof" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">eof</obj_property>
+         <obj_property name="ObjectShortName">eof</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/pkt_sent" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pkt_sent</obj_property>
+         <obj_property name="ObjectShortName">pkt_sent</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/fid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">fid</obj_property>
+         <obj_property name="ObjectShortName">fid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_rd_wr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_rd_wr_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_rd_wr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_fifo_full_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fifo_full_i</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fifo_full_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_fdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_fdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_fdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/temp" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">temp[7:0]</obj_property>
+         <obj_property name="ObjectShortName">temp[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_byte_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_byte_i[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_byte_i[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_byte_q" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_byte_q[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_byte_q[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/jpeg_byte_q_q" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_byte_q_q[7:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_byte_q_q[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/wrightcount" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">wrightcount[11:0]</obj_property>
+         <obj_property name="ObjectShortName">wrightcount[11:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/underflow1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">underflow1</obj_property>
+         <obj_property name="ObjectShortName">underflow1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/underflow2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">underflow2</obj_property>
+         <obj_property name="ObjectShortName">underflow2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/overflow1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">overflow1</obj_property>
+         <obj_property name="ObjectShortName">overflow1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/overflow2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">overflow2</obj_property>
+         <obj_property name="ObjectShortName">overflow2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/jpg_uvc_comp/ps" type="other" db_ref_id="1">
+         <obj_property name="ElementShortName">ps</obj_property>
+         <obj_property name="ObjectShortName">ps</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group273" type="group">
+      <obj_property name="label">cdc_in</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/ifclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ifclk</obj_property>
+         <obj_property name="ObjectShortName">ifclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/flag_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">flag_full</obj_property>
+         <obj_property name="ObjectShortName">flag_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/faddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">faddr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">faddr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/cdcin" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cdcin[1:0]</obj_property>
+         <obj_property name="ObjectShortName">cdcin[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/slwr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">slwr</obj_property>
+         <obj_property name="ObjectShortName">slwr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/pktend" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend</obj_property>
+         <obj_property name="ObjectShortName">pktend</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/pktend_i" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pktend_i</obj_property>
+         <obj_property name="ObjectShortName">pktend_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/fdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">fdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">fdata[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid0_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid0_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid0_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid0_byte_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">edid0_byte_en</obj_property>
+         <obj_property name="ObjectShortName">edid0_byte_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid1_byte" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid1_byte[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid1_byte[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid1_byte_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">edid1_byte_en</obj_property>
+         <obj_property name="ObjectShortName">edid1_byte_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/resx0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resx0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resx0[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/resy0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resy0[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resy0[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/resx1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resx1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resx1[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/resy1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">resy1[15:0]</obj_property>
+         <obj_property name="ObjectShortName">resy1[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/jpeg_error" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_error</obj_property>
+         <obj_property name="ObjectShortName">jpeg_error</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/rgb_de0" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_de0</obj_property>
+         <obj_property name="ObjectShortName">rgb_de0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/rgb_de1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_de1</obj_property>
+         <obj_property name="ObjectShortName">rgb_de1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/jpeg_encoder_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_encoder_en</obj_property>
+         <obj_property name="ObjectShortName">jpeg_encoder_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/status" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">status[15:0]</obj_property>
+         <obj_property name="ObjectShortName">status[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/hdmi_out0_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hdmi_out0_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">hdmi_out0_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/dump_edid" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dump_edid[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dump_edid[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/dvi_hdmi" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dvi_hdmi[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dvi_hdmi[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/encoder_hdmi_source" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_hdmi_source[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_hdmi_source[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/encoder_output_type" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">encoder_output_type[1:0]</obj_property>
+         <obj_property name="ObjectShortName">encoder_output_type[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/jpeg_quality" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">jpeg_quality[1:0]</obj_property>
+         <obj_property name="ObjectShortName">jpeg_quality[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/cdc_in_free" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cdc_in_free</obj_property>
+         <obj_property name="ObjectShortName">cdc_in_free</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/rst_n" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_n</obj_property>
+         <obj_property name="ObjectShortName">rst_n</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_we" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_we[0:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_we[0:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_write_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_write_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_read_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_read_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_read_data[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_write_add_edid0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_write_add_edid0[6:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_write_add_edid0[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_write_add_edid1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_write_add_edid1[6:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_write_add_edid1[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_write_add" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_write_add[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_write_add[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/edid_read_add" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edid_read_add[7:0]</obj_property>
+         <obj_property name="ObjectShortName">edid_read_add[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/status_q" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">status_q[15:0]</obj_property>
+         <obj_property name="ObjectShortName">status_q[15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/dump_edid_q" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dump_edid_q[3:0]</obj_property>
+         <obj_property name="ObjectShortName">dump_edid_q[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/counter" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">counter[6:0]</obj_property>
+         <obj_property name="ObjectShortName">counter[6:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/working" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">working</obj_property>
+         <obj_property name="ObjectShortName">working</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/din" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">din[7:0]</obj_property>
+         <obj_property name="ObjectShortName">din[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/wr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/rd_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/dout" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dout[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">full</obj_property>
+         <obj_property name="ObjectShortName">full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/almost_full" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">almost_full</obj_property>
+         <obj_property name="ObjectShortName">almost_full</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_controller/uut/cdc_in_comp/almost_empty" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">almost_empty</obj_property>
+         <obj_property name="ObjectShortName">almost_empty</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
