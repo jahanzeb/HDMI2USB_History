@@ -258,12 +258,12 @@ slwr <= slwr_i;
 
 LED(0) <= de_H0;
 LED(1) <= de_H1;
-LED(2) <= jpeg_encoder_cmd(0);
+LED(2) <= usb_cmd(1);
 LED(3) <= flagB; -- full flag
-LED(4) <= flagC; -- empty flag
+LED(4) <= flagC; -- empty flag 
 LED(5) <= slwr_i;
-LED(6) <= '0';
-LED(7) <= error_ram;
+LED(6) <= selector_cmd(0);
+LED(7) <= selector_cmd(1);
 
 
 debouncerBtnc : entity work.debouncer
