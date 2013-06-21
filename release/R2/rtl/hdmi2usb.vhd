@@ -227,6 +227,7 @@ signal jpg_busy : std_logic;
 signal read_img : std_logic;
 signal write_img : std_logic;
 signal hdmi_cmd : std_logic_vector(1 downto 0);
+signal dvi_only : std_logic_vector(1 downto 0);
 signal usb_cmd : std_logic_vector(2 downto 0);
 signal selector_cmd : std_logic_vector(12 downto 0);
 signal status : std_logic_vector(3 downto 0);
@@ -468,9 +469,9 @@ edid_hack0 : entity work.edid_master_slave_hack
 		     hpd_lcd     => hpd,
 			 hpd_pc		 => open,
 		     sda_byte    => edid0_byte,
-		     sda_byte_en => edid0_byte_en);
-		     
-		     		     
+		     sda_byte_en => edid0_byte_en,
+			 dvi_only	 => dvi_only(0),
+			 hdmi_dvi	 => hdmi_cmd(0));
 
 edid_hack1 : entity work.edid_master_slave_hack
 	port map(rst_n       => rst_n,
@@ -482,7 +483,9 @@ edid_hack1 : entity work.edid_master_slave_hack
 		     hpd_lcd     => hpd,
 			 hpd_pc		 => open,
 		     sda_byte    => edid1_byte,
-		     sda_byte_en => edid1_byte_en);
+		     sda_byte_en => edid1_byte_en,
+			 dvi_only	 => dvi_only(1),
+			 hdmi_dvi	 => hdmi_cmd(1));
 		     
 usb_comp: entity work.usb_top
 	port map(edid0_byte       => edid0_byte,
@@ -547,6 +550,7 @@ controller_comp : entity work.controller
 		     jpeg_encoder_cmd => jpeg_encoder_cmd,
 		     selector_cmd     => selector_cmd,
 		     hdmi_cmd         => hdmi_cmd,
+			 hdmi_dvi		  => dvi_only,
 		     write_img        => write_img,
 		     read_img         => read_img,
 		     rdy_H            => (rdy_H1 & rdy_H0),

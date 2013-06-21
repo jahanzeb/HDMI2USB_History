@@ -45,12 +45,14 @@ input scl_pc,
 input hpd_lcd,
 output reg hpd_pc,
 output [7:0] sda_byte,
-output sda_byte_en
+output sda_byte_en,
+output reg dvi_only,
+input hdmi_dvi
 );
 
 
 reg stop;
-reg dvi_only;
+
 wire [7:0] edid_byte_lcd;
 reg [6:0] counter;
 reg [6:0] segments, segment_count;
@@ -155,7 +157,7 @@ edidslave edid_slave(
 .clk(clk),
 .sda(sda_pc),
 .scl(scl_pc),
-.dvi_only(dvi_only)
+.dvi_only(hdmi_dvi)
 );
 
 endmodule

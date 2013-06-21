@@ -54,6 +54,8 @@ port
 	selector_cmd 		: out std_logic_vector(12 downto 0); -- (1:0 source ) (2 gray/color) (3 inverted/not-inverted) (4:5 blue depth) (6:7 green depth) (8:9 red depth) (10 blue on/off) (11 green on/off) (12 red on/off)
 	hdmi_cmd			: out std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi
 	
+	hdmi_dvi			: in std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi
+	
 	write_img			: out std_logic;
 	read_img			: out std_logic;	
 
@@ -109,6 +111,7 @@ signal usb_cmd_i			: std_logic_vector(2 downto 0); -- UVCpayloadheader(0),  raw/
 signal jpeg_encoder_cmd_i	: std_logic_vector(1 downto 0); -- encodingQuality(1 downto 0)	
 signal selector_cmd_i 		: std_logic_vector(12 downto 0); -- (1:0 source ) (2 gray/color) (3 inverted/not-inverted) (4:5 blue depth) (6:7 green depth) (8:9 red depth) (10 blue on/off) (11 green on/off) (12 red on/off)
 signal hdmi_cmd_i			: std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi
+signal hdmi_dvi_q			: std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi
 
 
 
@@ -247,13 +250,24 @@ if rst = '1' then
 	hdmi_cmd_i			<= "11"; -- if 1 then dvi else hdmi
 	uvc_rst_i <= '1';
 	pressed <= '0';
+	hdmi_dvi_q <= "00";
 
 elsif rising_edge(clk) then
 	
 	uvc_rst_i <= '0';		
 	status <= (others => '0');
 	rd_en <= '0';	
+	hdmi_dvi_q <= hdmi_dvi;
 	
+	if (hdmi_dvi_q(0) xor hdmi_dvi(0)) = '1' then 
+		hdmi_cmd_i(0) <= hdmi_dvi(0);
+	end if;
+	
+	if (hdmi_dvi_q(1) xor hdmi_dvi(1)) = '1' then 
+		hdmi_cmd_i(1) <= hdmi_dvi(1);
+	end if;
+	
+
 	
 	if btnd = '1' and pressed = '0' then
 		uvc_rst_i <= '1';
