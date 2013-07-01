@@ -181,7 +181,7 @@ elsif falling_edge(ifclk) then
 			wrightcount <= wrightcount +1; 
 			
 			if header = '1' then 
-				if wrightcount = X"200" then		
+				if wrightcount = X"400" then		
 						ps <= uvc_wait;
 						wrightcount <= (others => '0');
 				elsif wrightcount = X"000" then
@@ -249,9 +249,9 @@ elsif falling_edge(ifclk) then
 						
 				end if;
 			else 
-				if wrightcount = X"200" then		
-						ps <= uvc_wait;
-						wrightcount <= (others => '0');
+				if wrightcount = X"400" then		
+					ps <= uvc_wait;
+					wrightcount <= (others => '0');
 				else
 
 					slwr		<= '0';
@@ -364,7 +364,7 @@ rd_en => jpeg_rd_en,
 dout => jpeg_fdata,
 empty => jpeg_fifo_empty_i,
 --full => jpeg_fifo_full_i,
-prog_full => jpeg_fifo_full_i, -- 500 bytes are needed in fifo not 512 because 12 are header.
+prog_full => jpeg_fifo_full_i, -- 1012 bytes are needed in fifo not 1024 because 12 are header.
 overflow => overflow2,
 underflow => underflow2
 );

@@ -100,6 +100,7 @@ port
 
 	scl_pc1 	: in std_logic; -- DDC scl connected with PC
 	sda_pc1 	: inout std_logic; -- DDC sda connected with PC	
+	
 	-- scl_lcd1 	: out std_logic; -- DDC scl connected with LCD
 	-- sda_lcd1 	: inout std_logic; -- DDC sda connected with LCD
 
@@ -217,15 +218,10 @@ signal edid1_byte_en : std_logic;
 signal slwr_i : std_logic;
 signal cmd_en : std_logic;
 signal cmd_byte : std_logic_vector(7 downto 0);
-signal raw_start : std_logic;
-signal raw_busy : std_logic;
-signal raw_done : std_logic;
 signal uvc_rst : std_logic;
 signal jpg_start : std_logic;
 signal jpg_done : std_logic;
 signal jpg_busy : std_logic;
-signal read_img : std_logic;
-signal write_img : std_logic;
 signal hdmi_cmd : std_logic_vector(1 downto 0);
 signal dvi_only : std_logic_vector(1 downto 0);
 signal usb_cmd : std_logic_vector(2 downto 0);
@@ -235,7 +231,9 @@ signal img_clk : std_logic;
 signal jpg_enable : std_logic;
 signal raw_fifo_full : std_logic;
 signal img_out_en : std_logic;
+signal ycbcr_en : std_logic;
 signal img_out : std_logic_vector(23 downto 0);
+signal ycbcr : std_logic_vector(23 downto 0);
 signal jpeg_encoder_cmd : std_logic_vector(1 downto 0);
 signal outif_almost_full : std_logic;
 signal btnr_s : std_logic;
@@ -246,7 +244,7 @@ signal jpeg_byte : std_logic_vector(7 downto 0);
 signal jpeg_en : std_logic;
 signal jpg_fifo_afull : std_logic;
 signal error_ram : std_logic;
-
+signal to_send : std_logic_vector(23 downto 0);
 
 
 	
@@ -351,8 +349,6 @@ ddr2_comp : entity work.image_buffer
 		     mcb3_dram_dqs_n  => mcb3_dram_dqs_n,
 		     mcb3_dram_ck     => mcb3_dram_ck,
 		     mcb3_dram_ck_n   => mcb3_dram_ck_n,
-		     write_img        => write_img,
-		     read_img         => read_img,
 		     img_in           => rgb,
 		     img_in_en        => de,
 		     img_out          => img_out,
@@ -362,7 +358,15 @@ ddr2_comp : entity work.image_buffer
 		     clk              => clk,
 		     clk_out          => img_clk,
 		     jpg_or_raw       => usb_cmd(1),
+			 vsync			  => vsync,
+			 jpg_busy		  => jpg_busy,
+			 jpg_done		  => jpg_done,
+			 jpg_start		  => jpg_start,
+			 resX			  => resX,
+			 resY			  => resY,
+			 to_send		  => to_send,
 		     rst              => rst,
+			 uvc_rst		  => uvc_rst,
 		     error            => error_ram);
 		     
 img_sel_comp : entity work.image_selector
@@ -417,7 +421,6 @@ hdmiMatri_Comp : entity work.hdmimatrix
 		     RX1_TMDSB       => RX1_TMDSB,
 		     TX1_TMDS        => TX1_TMDS,
 		     TX1_TMDSB       => TX1_TMDSB,
-
 		     rx0_de          => de_H0,
 		     rx1_de          => de_H1,
 		     rx1_hsync       => hsync_H1,
@@ -429,8 +432,7 @@ hdmiMatri_Comp : entity work.hdmimatrix
 			 rdy0			 => rdy_H0,	 
 			 rdy1			 => rdy_H1,			 
 			 rx0_rgb		=> rgb_H0,
-			 rx1_rgb		=> rgb_H1,
-			 
+			 rx1_rgb		=> rgb_H1,			 
 			 tx_rgb			=> rgb_H,			 
 			 tx_de 			 => de_H,
 			 tx_hsync 		 => hsync,
@@ -487,6 +489,16 @@ edid_hack1 : entity work.edid_master_slave_hack
 			 dvi_only	 => dvi_only(1),
 			 hdmi_dvi	 => hdmi_cmd(1));
 		     
+rgb2ycbcr_comp: entity work.rgb2ycbcr
+	port map(
+		rgb 	=> img_out,
+		de_in 	=> img_out_en,
+		ycbcr 	=> ycbcr,
+		de_out 	=> ycbcr_en,
+		rst_n 	=> rst_n,
+		clk 	=> img_clk);
+
+
 usb_comp: entity work.usb_top
 	port map(edid0_byte       => edid0_byte,
 		     edid0_byte_en    => edid0_byte_en,
@@ -496,12 +508,10 @@ usb_comp: entity work.usb_top
 		     jpeg_clk         => img_clk,
 		     jpeg_en          => jpeg_en,
 		     jpeg_fifo_full   => outif_almost_full,
-		     raw_en           => img_out_en,
-		     raw_bytes        => img_out,
+		     raw_en           => ycbcr_en,
+		     raw_bytes        => ycbcr,
 		     raw_fifo_full    => raw_fifo_full,
 		     raw_clk          => img_clk,
-		     resX             => resX,
-		     resY             => resY,
 		     fdata            => fdata,
 		     flag_full        => flagB,
 		     flag_empty       => flagC,
@@ -523,9 +533,7 @@ usb_comp: entity work.usb_top
 		     selector_cmd     => selector_cmd,
 		     hdmi_cmd         => hdmi_cmd,
 		     uvc_rst          => uvc_rst,
-		     raw_done         => raw_done,
-		     raw_busy         => raw_busy,
-		     raw_start        => raw_start,
+			 to_send		  => to_send,
 		     cmd_en           => cmd_en,
 		     cmd              => cmd_byte,
 		     rst              => rst,
@@ -551,21 +559,12 @@ controller_comp : entity work.controller
 		     selector_cmd     => selector_cmd,
 		     hdmi_cmd         => hdmi_cmd,
 			 hdmi_dvi		  => dvi_only,
-		     write_img        => write_img,
-		     read_img         => read_img,
 		     rdy_H            => (rdy_H1 & rdy_H0),
 		     btnu             => btnu_s,
 		     btnd             => btnd_s,
 		     btnl             => btnl_s,
 		     btnr             => btnr_s,
-		     jpg_done         => jpg_done,
-		     jpg_busy         => jpg_busy,
-		     jpg_start        => jpg_start,
 		     uvc_rst          => uvc_rst,
-		     vsync            => vsync,
-		     raw_done         => raw_done,
-		     raw_busy         => raw_busy,
-		     raw_start        => raw_start,
 		     cmd_byte         => cmd_byte,
 		     cmd_en           => cmd_en,
 		     rst              => rst,
@@ -573,6 +572,3 @@ controller_comp : entity work.controller
 		     clk              => img_clk);		     	          
 
 end architecture rtl;
-
-
-

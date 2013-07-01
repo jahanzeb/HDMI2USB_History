@@ -98,7 +98,7 @@ RESF: if (SIMULATION = "FALSE" ) generate
 
 end generate;
 REST: if (SIMULATION = "TRUE" ) generate
-	resX_i <= X"0400";
+	resX_i <= X"0200";
 	resY_i <= X"0008";
 
 	spY <= 1;

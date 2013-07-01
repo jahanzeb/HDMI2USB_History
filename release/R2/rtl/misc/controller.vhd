@@ -48,37 +48,17 @@ entity controller is
 port
 (
 	status 				: out std_logic_vector(3 downto 0);		
-	
 	usb_cmd				: out std_logic_vector(2 downto 0); -- UVCpayloadheader(0),  raw/jpeg(1), uvc on/off(2)
 	jpeg_encoder_cmd	: out std_logic_vector(1 downto 0); -- encodingQuality(1 downto 0)	
 	selector_cmd 		: out std_logic_vector(12 downto 0); -- (1:0 source ) (2 gray/color) (3 inverted/not-inverted) (4:5 blue depth) (6:7 green depth) (8:9 red depth) (10 blue on/off) (11 green on/off) (12 red on/off)
-	hdmi_cmd			: out std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi
-	
-	hdmi_dvi			: in std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi
-	
-	write_img			: out std_logic;
-	read_img			: out std_logic;	
-
-	rdy_H				: in std_logic_vector(1 downto 0);
-	
+	hdmi_cmd			: out std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi	
+	hdmi_dvi			: in std_logic_vector(1 downto 0); -- if 1 then dvi else hdmi	
+	rdy_H				: in std_logic_vector(1 downto 0);	
 	btnu				: in std_logic;
 	btnd				: in std_logic;
 	btnl				: in std_logic;
-	btnr				: in std_logic;
-	
-	jpg_done			: in std_logic;
-	jpg_busy			: in std_logic;
-	jpg_start			: out std_logic;
-	
-	uvc_rst				: out std_logic;
-	
-	vsync				: in std_logic;
-	
-	
-	raw_done			: in std_logic;
-	raw_busy			: in std_logic;
-	raw_start			: out std_logic;
-	
+	btnr				: in std_logic;	
+	uvc_rst				: out std_logic;	
 	cmd_byte 			: in  std_logic_vector(7 downto 0);
 	cmd_en 				: in std_logic;
 	rst 				: in std_logic;
@@ -134,11 +114,7 @@ signal uvc_rst_i :  STD_LOGIC;
 signal vsync_q :  STD_LOGIC;
 signal vsync_rising_edge :  STD_LOGIC;
 signal pressed :  STD_LOGIC;
-
-
-
-type rd_wr_states is (s_reset,wait_for_start1,wait_for_start2,wait_for_busy,wait_for_done,hold_reset);
-signal rd_wr_state : rd_wr_states;
+signal toggle :  STD_LOGIC;
 
 
 begin
@@ -150,109 +126,39 @@ selector_cmd <= selector_cmd_i;
 hdmi_cmd <= hdmi_cmd_i;
 
 
--- state machine
-store_read_img : process(rst,clk) -- write_img,read_img 
-begin
-if rst = '1' then
-	
-	write_img 	<= '0';
-	read_img 	<= '0';
-	jpg_start <= '0';
-	raw_start <= '0';
-	rd_wr_state <= s_reset;
-	uvc_rst <= '1';
-	counter <= (others => '0');
-	
-elsif rising_edge(clk) then
-
-vsync_rising_edge <= ((vsync xor vsync_q) and vsync) ;	
-vsync_q <= vsync;
-
-if uvc_rst_i = '1' then
-	uvc_rst <= '1';
-	rd_wr_state <= s_reset;
-	write_img 	<= '0';
-	read_img 	<= '0';
-else	
-	case rd_wr_state is 
-		when s_reset =>
-			write_img 	<= '0';
-			read_img 	<= '0';
-			jpg_start <= '0';
-			raw_start <= '0';
-			rd_wr_state <= hold_reset;
-			uvc_rst <= '1';			
-		
-		when hold_reset => 
-		counter <= counter+1;
-			if counter = (counter'range => '1') then
-				rd_wr_state <= wait_for_start1;
-				uvc_rst <= '0';
-			end if;
-			
-		
-		when wait_for_start1 =>		
-			if vsync_rising_edge = '1' and usb_cmd_i(2) = '1' then
-				rd_wr_state <= wait_for_start2;
-				write_img <= '1';
-			end if;
-			
-			
-		when wait_for_start2 =>
-			if vsync_rising_edge = '1' then				
-				write_img <= '0';				
-				jpg_start <= usb_cmd_i(1);	
-				raw_start <= not usb_cmd_i(1);					
-				rd_wr_state <= wait_for_busy;				
-			end if;
-			
-		when wait_for_busy =>
-			if jpg_busy = '1'  or raw_busy = '1' then
-				rd_wr_state <= wait_for_done;
-				jpg_start <= '0';	
-				raw_start <= '0';	
-				read_img <= '1';
-			end if;
-	
-			
-		
-		when wait_for_done =>
-			if (usb_cmd_i(1) = '1' and jpg_done = '1' ) or (usb_cmd_i(1) = '0' and raw_done = '1' ) then
-				rd_wr_state <= wait_for_start1;				
-				read_img <= '0';
-			end if;
-		
-		when others => 
-			rd_wr_state <= s_reset;
-			
-	end case;
-
-end if; -- uvc_rst_i
-	
-end if; -- clk
-end process;
-
-
-
-
-
 -- CMD Decoder
 process(rst,clk)
 begin
 if rst = '1' then
 
-	status <= (others => '0');
-	
-	usb_cmd_i			<= "111";  --   uvc on/off(2) raw/jpeg(1) UVCpayloadheader(0)
-	jpeg_encoder_cmd_i	<= "00"; -- encodingQuality(1 downto 0)	
+
+	usb_cmd_i					<= "101";  --   uvc on/off(2) raw/jpeg(1) UVCpayloadheader(0)
+	jpeg_encoder_cmd_i			<= "00"; -- encodingQuality(1 downto 0)	
 	selector_cmd_i(3 downto 0) 	<= "0111"; -- (1:0 source ) (2 gray/color) (3 inverted/not-inverted) 
-	selector_cmd_i(12 downto 4)  <= "111000000"; --(4:5 blue depth) (6:7 green depth) (8:9 red depth) (10 blue on/off) (11 green on/off) (12 red on/off)
-	hdmi_cmd_i			<= "11"; -- if 1 then dvi else hdmi
-	uvc_rst_i <= '1';
-	pressed <= '0';
-	hdmi_dvi_q <= "00";
+	selector_cmd_i(12 downto 4) <= "111000000"; --(4:5 blue depth) (6:7 green depth) (8:9 red depth) (10 blue on/off) (11 green on/off) (12 red on/off)
+	hdmi_cmd_i					<= "11"; -- if 1 then dvi else hdmi
+	uvc_rst_i 					<= '1';
+	pressed 					<= '0';
+	hdmi_dvi_q 					<= "00";
+	status 						<= (others => '0');	
+	toggle 						<= '0';
+	counter 					<= (others => '0');
 
 elsif rising_edge(clk) then
+
+
+	if uvc_rst_i = '1' then
+		uvc_rst <= '1';
+		counter <= (others => '0');
+		toggle 	<= '1';
+	else
+		counter <= counter+1;
+	end if;
+	
+	if counter = (counter'range => '1')  and toggle = '1' then
+		uvc_rst <= '0';
+		toggle 	<= '0';
+	end if;
 	
 	uvc_rst_i <= '0';		
 	status <= (others => '0');
@@ -292,8 +198,6 @@ elsif rising_edge(clk) then
 	else
 		pressed <= '0';
 	end if;
-	
-	
 	
 	
 	if empty = '0' and rd_en = '0' then 

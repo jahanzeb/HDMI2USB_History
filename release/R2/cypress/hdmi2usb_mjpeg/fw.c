@@ -90,7 +90,7 @@ BYTE valuesArray[26]=
     // 0x00,0x00,0x48,0x00,   			/* Max video frame size in bytes*/
     0x00,0x00,0x90,0x00,   			/* Max video frame size in bytes*/
 	
-    0x00,0x02,0x00,0x00              /* No. of bytes device can rx in single payload (512) */
+    0x00,0x04,0x00,0x00              /* No. of bytes device can rx in single payload (512) */
 };
 
 //-----------------------------------------------------------------------------
@@ -132,8 +132,7 @@ void main(void)
    Selfpwr = FALSE;            // Disable self powered
    GotSUD = FALSE;               // Clear "Got setup data" flag
 
-   // Initialize user device
-   TD_Init();
+
 
    // The following section of code is used to relocate the descriptor table. 
    // Since the SUDPTRH and SUDPTRL are assigned the address of the descriptor 
@@ -195,6 +194,9 @@ void main(void)
    // clear the Sleep flag.
    Sleep = FALSE;
 
+   // Initialize user device
+   TD_Init();
+   
    // Task Dispatcher
    while(TRUE)               // Main Loop
    {

@@ -9,8 +9,7 @@ run
 -opt_mode Speed
 -opt_level 2
 -power NO
--uc "D:/Dropbox/vWorker/freelancehandover/ucf/hdmi2usb.xcf"
--iuc NO
+-iuc YES
 -keep_hierarchy Yes
 -netlist_hierarchy As_Optimized
 -rtlview Yes

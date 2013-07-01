@@ -62,31 +62,28 @@ port(
 	mcb3_zio                                : inout  std_logic;
 	mcb3_dram_udm                           : out std_logic;
 	mcb3_dram_odt                           : out std_logic;
-
 	mcb3_dram_dqs                           : inout  std_logic;
 	mcb3_dram_dqs_n                         : inout  std_logic;
 	mcb3_dram_ck                            : out std_logic;
 	mcb3_dram_ck_n                          : out std_logic;
-
-
-	write_img		: in std_logic;
-	read_img		: in std_logic;
-	
 	img_in     	: in std_logic_vector(23 downto 0);
-	img_in_en      : in std_logic;
-	
+	img_in_en      : in std_logic;	
 	img_out     	: out std_logic_vector(23 downto 0);
-	img_out_en      : out std_logic;
-	
+	img_out_en      : out std_logic;	
 	jpg_fifo_afull    : in std_logic;
 	raw_fifo_afull    : in std_logic;
-	
 	clk		: in std_logic;
 	clk_out	: out std_logic;
-	
 	jpg_or_raw		: in std_logic; -- 1 = jpg, 0 = raw
-		
+	vsync		: in std_logic; 
+	jpg_busy		: in std_logic; 
+	jpg_done		: in std_logic; 
+	jpg_start		: out std_logic; 
+	resX			: in std_logic_vector(15 downto 0);
+	resY			: in std_logic_vector(15 downto 0);	
+	to_send 		: out std_logic_vector(23 downto 0);
 	rst 	: in std_logic;
+	uvc_rst	: in std_logic;
 	error	: out std_logic
 );
 end image_buffer;
@@ -220,6 +217,7 @@ signal c3_p3_wr_underrun                       :  std_logic;
 signal c3_p3_wr_error                          :  std_logic;
 
 signal wrAdd : std_logic_vector(29 downto 0);
+signal wrAdd_q : std_logic_vector(29 downto 0);
 signal rdAdd : std_logic_vector(29 downto 0);
 
 signal counter_rd : std_logic_vector(5 downto 0);
@@ -231,6 +229,9 @@ signal wr_state : write_states;
 
 type read_states is (read_cmd,reset,read_data,read_wait,wait_data);
 signal rd_state : read_states;
+
+type rd_wr_states is (s_reset,wait_for_start1,wait_for_start2,wait_for_busy,wait_for_done,wait_for_read_finish);
+signal rd_wr_state : rd_wr_states;
 
 -- fifo signals
 signal wr_en : std_logic;
@@ -265,9 +266,89 @@ signal doutb : std_logic_vector(7 downto 0);
 
 signal clk_img : std_logic;
 
+signal write_img 	: std_logic;
+signal read_img 	: std_logic;
+signal vsync_rising_edge 	: std_logic;
+signal vsync_q 	: std_logic;
 
 
 begin -- Architecture 
+
+
+process(uvc_rst, clk_img)
+begin
+
+if uvc_rst = '1' then
+	rd_wr_state <= s_reset;
+	write_img 	<= '0';
+	read_img 	<= '0';
+	jpg_start <= '0';
+elsif rising_edge(clk_img) then	
+
+vsync_rising_edge <= ((vsync xor vsync_q) and vsync) ;	
+vsync_q <= vsync;
+
+	case rd_wr_state is 
+		when s_reset =>
+			write_img 	<= '0';
+			read_img 	<= '0';
+			jpg_start <= '0';
+			rd_wr_state <= wait_for_start1;
+				
+		when wait_for_start1 =>		
+			if vsync_rising_edge = '1' then
+				rd_wr_state <= wait_for_start2;
+				write_img <= '1';
+			end if;
+			
+			
+		when wait_for_start2 =>
+			if vsync_rising_edge = '1' then	
+				wrAdd_q <= wrAdd;
+				to_send <= resX(10 downto 0)*resY(10 downto 0)*"10";
+				write_img <= '0';				
+								
+				if jpg_or_raw = '1' then 
+					rd_wr_state <= wait_for_busy;
+					jpg_start <= '1';				
+				else
+					rd_wr_state <= wait_for_read_finish;
+					
+				end if;
+			end if;
+			
+		when wait_for_busy =>
+			if jpg_busy = '1' then
+				rd_wr_state <= wait_for_read_finish;
+				jpg_start <= '0';	
+								
+			end if;
+		
+		when wait_for_read_finish => 	
+			read_img <= '1';		
+			if wrAdd_q = rdAdd  then
+				read_img <= '0';
+				if jpg_or_raw = '1' then 
+					rd_wr_state <= wait_for_done;
+				else
+					rd_wr_state <= wait_for_start1;
+				end if;
+			end if;
+		
+		when wait_for_done =>
+			if  jpg_done = '1' then
+				rd_wr_state <= wait_for_start1;				
+			end if;
+		
+		when others => 
+			rd_wr_state <= s_reset;
+			
+	end case;
+
+end if; -- uvc_rst  -- clk
+
+
+end process;
 
 
 

@@ -53,8 +53,6 @@ entity usb_top is
 	raw_bytes		: in std_logic_vector(23 downto 0);
 	raw_fifo_full	: out std_logic;			
 	raw_clk 		: in std_logic;
-	resX			: in std_logic_vector(15 downto 0);
-	resY			: in std_logic_vector(15 downto 0);	
 	
 	-- cypress chip signals 
 	fdata		: inout std_logic_vector(7 downto 0);
@@ -84,10 +82,7 @@ entity usb_top is
 
 	uvc_rst				: in std_logic;	
 	
-	raw_done 		: out std_logic;
-	raw_busy 		: out std_logic;
-	raw_start 		: in std_logic;
-	
+	to_send 		: in std_logic_vector(23 downto 0);	
 	cmd_en 			: out std_logic;
 	cmd 			: out std_logic_vector(7 downto 0);
 	
@@ -137,7 +132,7 @@ signal raw_uvc_error : std_logic;
 
 
 
-signal to_send : std_logic_vector(23 downto 0);
+
 signal jpg_uvc_enable,raw_uvc_enable,uvc_enable,header : std_logic;
 
 -- components signals 
@@ -174,11 +169,6 @@ if rst = '1' then
 	fdataout <= (others => '0');
 	
 elsif falling_edge(ifclk) then
-
-
-	to_send <= resX(10 downto 0)*resY(10 downto 0)*"11";
-	
-	
 
 	slwr		<= '1';
 	slrd		<= '1';
@@ -288,7 +278,6 @@ jpg_uvc_comp: entity work.jpg_uvc
 raw_uvc_comp: entity work.raw_uvc
 	port map(raw_en			=> raw_en,
 			raw_bytes		=> raw_bytes,
-			to_send			=> to_send,
 			raw_fifo_full	=> raw_fifo_full,
 			error			=> raw_uvc_error,
 			raw_clk 		=> raw_clk,
@@ -301,9 +290,7 @@ raw_uvc_comp: entity work.raw_uvc
 			faddr			=> faddr_i,
 			uvcin			=> uvcin,
 			header 			=> header,
-			done			=> raw_done,
-			busy			=> raw_busy,
-			start 			=> raw_start,
+			to_send 		=> to_send,
 			uvc_in_free		=> uvc_in_raw_free,
 			uvc_rst 		=> uvc_rst);
 

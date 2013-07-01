@@ -39,7 +39,7 @@ port (
 	-- raw signals
 	raw_en			: in std_logic;
 	raw_bytes		: in std_logic_vector(23 downto 0);
-	to_send			: in std_logic_vector(23 downto 0); -- total no of bytes in image to send
+
 	raw_fifo_full	: out std_logic;		
 	error			: out std_logic;		
 	raw_clk 		: in std_logic;
@@ -54,16 +54,11 @@ port (
 	faddr		: in std_logic_vector(1 downto 0);
 	uvcin		: in std_logic_vector(1 downto 0);	
 	header 		: in std_logic;
-	
-	done 		: out std_logic;
-	busy 		: out std_logic;
-	start 		: in std_logic;
-	
-
-	
+	to_send		: in std_logic_vector(23 downto 0);
+		
   	-- others
 	uvc_in_free	: out std_logic;		
-	uvc_rst 		: in std_logic
+	uvc_rst 	: in std_logic
 );
 end entity raw_uvc;
 
@@ -92,25 +87,23 @@ signal fid : std_logic;
 signal eof : std_logic;
 
 
-
 signal total_send: std_logic_vector(23 downto 0);
 signal dout: std_logic_vector(23 downto 0);
 signal wrightcount: std_logic_vector(11 downto 0);
 signal watchdog: std_logic_vector(5 downto 0);
 signal count: std_logic_vector(1 downto 0);
 signal raw_en_i : std_logic;
-signal done_i : std_logic;
+
 
 signal full,empty,almost_empty,valid,rd_en : std_logic;
 
-type states is (wait_for_uvc,uvc_wait,uvc_in_pktend,uvc_send_data,s_reset,free_uvc,s_skip,wait_for_start);
+type states is (wait_for_uvc,uvc_wait,uvc_in_pktend,uvc_send_data,s_reset,free_uvc,s_skip);
 signal ps : states;
 
 
 begin
 
 
-done <= done_i;
 
 syncProc: process(uvc_rst,ifclk)
 begin
@@ -124,14 +117,13 @@ if uvc_rst = '1' then
 	wrightcount <= (others => '0');	
 	watchdog <= (others => '0');	
 	ps <= s_reset;
-	done_i <= '0';
+
 	eof <= '0';
 elsif falling_edge(ifclk) then
 
 	slwr		<= '1';
 	pktend		<= '1';
 	rd_en 	<= '0';
-
 
 	case ps is
 	when s_reset =>
@@ -140,26 +132,14 @@ elsif falling_edge(ifclk) then
 		rd_en		<= '0';
 		fid			<= '0';
 		uvc_in_free	<= '1';	
-		done_i <= '0';
-		busy <= '0';
-		ps 			<= wait_for_start;
+		ps 			<= wait_for_uvc;
 		fdata 		<= (others => '0');
 		watchdog 	<= (others => '0');
 		wrightcount <= (others => '0');	
 		total_send 	<= (others => '0');	
 		count 		<= (others => '0');	
 		
-	when wait_for_start =>
-		done_i <= '0';
-		uvc_in_free	<= '1';	
-		if start = '1' then
-			ps <= wait_for_uvc;
-			busy <= '1';
-			count 		<= (others => '0');	
-		else
-			rd_en <= not empty;
-		end if;
-		
+
 	when wait_for_uvc =>
 		if  faddr = uvcin and raw_enable = '1' then
 			ps <= uvc_wait;			
@@ -167,14 +147,14 @@ elsif falling_edge(ifclk) then
 		end if;
 		
 	when uvc_send_data =>
-		rd_en <= '0';
+
 	
 		if empty = '0' and flag_full = '1' then 
 			
 			wrightcount <= wrightcount +1; 
 			
 			if header = '1' then 
-				if wrightcount = X"200" then		
+				if wrightcount = X"400" then		
 						ps <= uvc_wait;
 						wrightcount <= (others => '0');
 				elsif wrightcount = X"000" then
@@ -236,35 +216,33 @@ elsif falling_edge(ifclk) then
 					total_send <= total_send + 1;												
 					if total_send = to_send then
 						fid 	<= not fid;
-						ps <= uvc_in_pktend;
-						done_i <= '1';
+						ps <= uvc_in_pktend;						
 						wrightcount <= (others => '0');
 						total_send <= (others => '0');						
 					else					
 						slwr		<= '0';						
+						count <= count+1;
 						if count = "00" then							
-							fdata <= dout(7 downto 0);						
-							count <= "01";
+							fdata <= dout(7 downto 0);													
 						elsif count = "01" then
 							fdata <= dout(15 downto 8);
-							count <= "10";
+							rd_en <= '1';	
+						elsif count = "10" then							
+							fdata <= dout(7 downto 0);																				
 						else
 							fdata <= dout(23 downto 16);
-							count <= "00";
-							rd_en <= '1';						
+							rd_en <= '1';											
 						end if;					
 					end if; -- to_send
 					
-					if (total_send = to_send - 500) then
+					if (total_send = to_send - 1012) then
 						eof <= '1';
-					end if;
-					
-						
+					end if;						
 				end if;
 			
 			else -- if header not send 
 			
-				if wrightcount = X"200" then		
+				if wrightcount = X"400" then		
 						ps <= uvc_wait;
 						wrightcount <= (others => '0');			
 
@@ -275,28 +253,29 @@ elsif falling_edge(ifclk) then
 					if total_send = to_send then
 						fid 	<= not fid;
 						ps <= uvc_in_pktend;
-						done_i <= '1';
 						wrightcount <= (others => '0');
 						total_send <= (others => '0');						
 					else					
 						slwr		<= '0';						
+						count <= count+1;
 						if count = "00" then							
-							fdata <= dout(7 downto 0);						
-							count <= "01";
+							fdata <= dout(7 downto 0);													
 						elsif count = "01" then
 							fdata <= dout(15 downto 8);
-							count <= "10";
+							rd_en <= '1';	
+						elsif count = "10" then							
+							fdata <= dout(7 downto 0);																				
 						else
 							fdata <= dout(23 downto 16);
-							count <= "00";
-							rd_en <= '1';						
-						end if;					
+							rd_en <= '1';											
+						end if;				
 					end if; -- to_send
 					
 				end if;			-- end if header
 			end if; -- end if empty
 			
-		
+		-- else
+			-- ps <= uvc_wait;
 		end if;	
 
 	
@@ -311,23 +290,15 @@ elsif falling_edge(ifclk) then
 		end if;
 		
 	when uvc_in_pktend =>		
-		pktend	<= '0';
-		ps 		<= s_skip;
-		busy <= '0';
-		
-	when s_skip =>	
-		pktend	<= '0';
-		ps <= free_uvc;
+		pktend	<= '0';		
+		ps 		<= free_uvc;
 		
 	when free_uvc =>
 		uvc_in_free	<= '1';	
-		if done_i = '1' then
-			ps <= wait_for_start;
-		else
-			ps 		<= wait_for_uvc;	
-		end if;
-
-
+		ps <= s_skip;
+		
+	when s_skip =>	
+		ps <= wait_for_uvc;		
 	
 	when others =>
 		ps <= s_reset;

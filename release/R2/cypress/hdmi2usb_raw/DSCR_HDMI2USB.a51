@@ -182,24 +182,6 @@ db    0FAH                            ;/* Max power consumption of device (in 2m
     db 03H                           ;/* Source ID : 3 : connected to extn unit */
     db 00H                           ;/* String desc index : not used */
 
-    ; ;/* Video control status interrupt endpoint descriptor */
-    ; db 07H                           ;/* Descriptor size */
-    ; db DSCR_ENDPNT ;CY_U3P_USB_ENDPNT_DESCR,        ;/* Endpoint descriptor type */
-    ; db 81H;CY_FX_EP_CONTROL_STATUS,        ;/* Endpoint address and description */
-    ; db ET_INT;CY_U3P_USB_EP_INTR,             ;/* Interrupt end point type */
-    ; db 40H,00H                      ;/* Max packet size = 64 bytes */
-    ; db 88H                           ;/* Servicing interval : 8ms */
-
-    ; ;/* Class specific interrupt endpoint descriptor */
-    ; db 05H                           ;/* Descriptor size */
-    ; db 25H                           ;/* Class specific endpoint descriptor type */
-    ; db ET_INT;CY_U3P_USB_EP_INTR,             ;/* End point sub type */
-    ; db 40H,00H                      ;/* Max packet size = 64 bytes */
-
-	
-	
-	
-	
 	
     ;/* Standard video streaming interface descriptor (alternate setting 0) */
     db 09H                           ;/* Descriptor size */
@@ -211,17 +193,7 @@ db    0FAH                            ;/* Max power consumption of device (in 2m
     db 02H                           ;/* Interface sub class : CC_VIDEOSTREAMING */
     db 00H                           ;/* Interface protocol code : undefined */
     db 00H                           ;/* Interface descriptor string index */
-	
-    ; ;/* Endpoint descriptor for streaming video data */
-;     db 07H                           ;/* Descriptor size */
-;     db DSCR_ENDPNT ;CY_U3P_USB_ENDPNT_DESCR,        ;/* Endpoint descriptor type */
-;     db 86H            ;/* Endpoint address and description */
-;     db ET_BULK;CY_U3P_USB_EP_BULK,             ;/* Bulk Endpoint */
-;     db 00H
-;     db 02H                     ;/* 512 Bytes Maximum Packet Size. */
-;     db 00H                           ;/* Servicing interval for data transfers */	
-	
-	
+
 
 vsheader:
     ;/* Class-specific video streaming input header descriptor */
@@ -229,7 +201,6 @@ vsheader:
     db 24H                           ;/* Class-specific VS i/f type */
     db 01H                           ;/* Descriptotor subtype : input header */
     db 01H                           ;/* 1 format desciptor follows */
-    ; db 19H,00H                      ;/* Total size of class specific VS descr */
 	db   (vsheaderend-vsheader) mod 256 ;; Total Length (LSB)
 	db   (vsheaderend-vsheader)  /  256 ;; Total Length (MSB)	
     DB 86H             ;/* EP address for BULK video data */
@@ -242,46 +213,36 @@ vsheader:
     db 00H                           ;/* D2 : Compression quality supported */
 
     ;/* Class specific VS format descriptor */
-    db 0BH                           ;/* Descriptor size */
-    db 24H                           ;/* Class-specific VS i/f type */
-    db 06H                          ;/* Descriptotor subtype : VS_FORMAT_MJPEG */
-    db 01H                           ;/* Format desciptor index */
-    db 01H                           ;/* 1 Frame desciptor follows */
-    db 01H                           ;/* Uses fixed size samples */
-    db 01H                           ;/* Default frame index is 1 */
-    db 00H                           ;/* Non interlaced stream not reqd. */
-    db 00H                           ;/* Non interlaced stream not reqd. */
-    db 00H                           ;/* Non interlaced stream */
-    db 00H                           ;/* CopyProtect: duplication unrestricted */
+	db 1BH                          ; /* Descriptor size */
+	db 24H                          ; /* Class-specific VS I/f Type */
+	db 04H                          ; /* Subtype : uncompressed format I/F */
+	db 01H                          ; /* Format desciptor index (only one format is supported) */
+	db 01H                          ; /* number of frame descriptor followed */
+	db 59H,55H,59H,32H           	; /* GUID, globally unique identifier used to identify streaming-encoding format: YUY2  */       
+	db 00H,00H,10H,00H
+	db 80H,00H,00H,0AAH  
+	db 00H,38H,9BH,71H       
+	db 10H                           ;/* Number of bits per pixel used to specify color in the decoded video frame. 0 if not applicable: 10 bit per pixel */
+	db 01H                           ;/* Optimum Frame Index for this stream: 1 */
+	db 00H                           ;/* X dimension of the picture aspect ratio: Non-interlaced in progressive scan */
+	db 00H                           ;/* Y dimension of the pictuer aspect ratio: Non-interlaced in progressive scan*/
+	db 00H                           ;/* Interlace Flags: Progressive scanning, no interlace */
+	db 00H                           ;/* duplication of the video stream restriction: 0 - no restriction */
 
-    ;/* Class specific VS frame descriptor */
-    ; db 1EH                           ;/* Descriptor size */
-    ; db 24H                           ;/* Class-specific VS I/f Type */
-    ; db 07H                           ;/* Descriptotor subtype : VS_FRAME_MJPEG */
-    ; db 01H                           ;/* Frame desciptor index */
-    ; db 00H                           ;/* Still image capture method not supported */
-    ; db 00H,04H                      ;/* Width of the frame : 176 */
-    ; db 00H,03H                      ;/* Height of the frame : 144 */
-    ; db 00H,0C0H,5DH,00H            ;/* Min bit rate bits/s */
-    ; db 00H,0C0H,5DH,00H            ;/* max bit rate bits/s */
-    ; db 00H,58H,02H,00H           ;/* Maximum video or still frame size in bytes */
-    ; db 2AH,2CH,0AH,00H            ;/* Default frame interval */
-    ; db 01H                           ;/* Frame interval type : No of discrete intervals */
-    ; db 2AH,2CH,0AH,00H            ;/* Frame interval 3 */
-	
-	db 1EH                           ;/* Descriptor size */
+	; Frame descriptors
+    db 1EH                           ;/* Descriptor size */
     db 24H                           ;/* Class-specific VS I/f Type */
-    db 07H                           ;/* Descriptotor subtype : VS_FRAME_MJPEG */
+    db 05H                           ;/* Descriptotor subtype uncompressed frame I/F  */
     db 01H                           ;/* Frame desciptor index */
     db 02H                           ;/* Still image capture method not supported */
-    db 00H,04H                      ;/* Width of the frame : 176 */
-    db 00H,03H                      ;/* Height of the frame : 144 */
-    db 00H,00H,70H,08H ; (08 70 00 00)	;/* Min bit rate bits/s */
-    db 00H,00H,0A8H,0CH   ;  (0C A8 00 00) ;/* max bit rate bits/s */
-    db 00H,00H,48H,00H     ;(00 48 00 00)      ;/* Maximum video or still frame size in bytes */
-    db 2AH,2CH,0AH,00H            ;/* Default frame interval */
-    db 01H                           ;/* Frame interval type : No of discrete intervals */
-    db 2AH,2CH,0AH,00H            ;/* Frame interval 3 */
+    db 00H,04H                      ;/* Width of the frame : 1024 */
+    db 00H,03H                      ;/* Height of the frame : 768 */
+    db 00H,0B8H,0BH,00H  ; 00 0B B8 00	;/* Min bit rate bits/s */
+    db 00H,00H,0B8H,0BH  ; 0B B8 00 00  ;/* max bit rate bits/s */
+    db 00H,00H,18H,00H   ; 00 18 00 00  ;/* Maximum video or still frame size in bytes */
+    db 15H,16H,05H,00H   ; 00 05 16 15  ;/* Default frame interval */
+    db 01H                              ;/* Frame interval type : No of discrete intervals */
+    db 15H,16H,05H,00H   ; 00 05 16 15  ;/* Frame interval 3 */
 	
 vsheaderend:
 
@@ -302,7 +263,7 @@ vsheaderend:
     db 86H            ;/* Endpoint address and description */
     db ET_ISO;CY_U3P_USB_EP_BULK,             ;/* Bulk Endpoint */
     db 00H
-    db 02H                     ;/* 512 Bytes Maximum Packet Size. */
+    db 04H                     ;/* 1024 Bytes Maximum Packet Size. */
     db 01H                           ;/* Servicing interval for data transfers */
 
 
@@ -369,7 +330,7 @@ db   81H                                                  ;; Endpoint number, an
 db   ET_INT                                     		;; Endpoint type
 db   10H                                                  ;; Maximum packet size (LSB)
 db   00H                                                  ;; Max packet size (MSB)
-db   02H                                                  ;; Polling interval
+db   0FFH                                                  ;; Polling interval
 
 	  
 														;; Virtual COM Port Data Interface Descriptor
@@ -390,7 +351,7 @@ db   84H                                                  ;; Endpoint number, an
 db   ET_BULK                                   		;; Endpoint type
 db   00H                                                  ;; Maximum packet size (LSB)
 db   02H                                                  ;; Max packet size (MSB)
-db   00H                                                  ;; Polling interval
+db   0FFH                                                  ;; Polling interval
 
 														;; EP1OUT Descriptor
 db   DSCR_ENDPNT_LEN                           		;; Descriptor length
@@ -399,7 +360,7 @@ db   02H                                                  ;; Endpoint number, an
 db   ET_BULK                                   	        ;; Endpoint type
 db   00H                                                  ;; Maximum packet size (LSB)
 db   02H                                                  ;; Max packet size (MSB)
-db   00H                                                  ;; Polling interval
+db   0FFH                                                  ;; Polling interval
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

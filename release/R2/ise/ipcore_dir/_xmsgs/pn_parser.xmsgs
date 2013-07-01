@@ -8,10 +8,10 @@
 <!-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Dropbox/vWorker/freelancehandover/ise/ipcore_dir/rawUVCfifo.vhd&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Dropbox/vWorker/freelancehandover/ise/ipcore_dir/edidram.vhd&quot; into library work</arg>
 </msg>
 
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Dropbox/vWorker/freelancehandover/ise/ipcore_dir/rawUVCfifo_synth.vhd&quot; into library work</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Dropbox/vWorker/freelancehandover/ise/ipcore_dir/edidram_synth.vhd&quot; into library work</arg>
 </msg>
 
 </messages>
